@@ -1,22 +1,23 @@
-import { useRef } from 'react';
+import { Divider } from 'antd';
 import { styled } from '@stitches/react';
-import { Col, Image, Row } from 'antd';
-import useOnScreen from '../hooks/useOnScreen';
+import ImageGallery from "react-image-gallery";
 
-import { useWindowSize } from 'react-use';
 import { ConfigsType } from '../configs';
+import GroovePaper from '../resources/GroovePaper.png';
+import "react-image-gallery/styles/css/image-gallery.css";
+
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
 const Layout = styled('div', {
   width: '100%',
-  padding: isPortrait ? '30% 0% 15% 5%' : '5% 0% 5% 10%',
+  padding: isPortrait ? '5%' : '5% 10%',
 });
 
 const Title = styled('p', {
-  color: '#FFFFFF',
+  // color: '#FFFFFF',
   width: '100%',
-  fontSize: isPortrait ? '2.5em' : '3.5em',
+  fontSize: isPortrait ? '1.5em' : '2em',
   margin: 0,
   fontWeight: '500',
 });
@@ -25,34 +26,26 @@ type GalleryProps = {
   config: ConfigsType;
 };
 
-const Gallery = ({ config }: GalleryProps) => {
-  const { width } = useWindowSize();
+const Wrapper = styled('div', {
+  backgroud: '#efebe9',
+  backgroundImage: `url(${GroovePaper})`,
+  // padding: 42,
+  width: '100%',
+  // maxHeight: '40vh'
+  minHeight: '100vh',
+})
 
-  const ref = useRef<HTMLSelectElement>(null);
-  const onScreen: boolean = useOnScreen<HTMLDivElement>(ref, '-125px');
+const Gallery = ({ config }: GalleryProps) => {
 
   return (
-    <section
-      ref={ref}
-      style={{
-        height: '100vh',
-        background: onScreen ? '#212121' : '#EFEBE9',
-        overflow: 'hidden',
-        position: 'relative',
-        transition: 'background 1s ease-in',
-      }}
-    >
+    <Wrapper>
       <Layout>
-        <Title>우리의 아름다운 순간</Title>
+        <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
+          <Title>Album Kami</Title>
+        </Divider>
+        <ImageGallery autoPlay showPlayButton={false} showFullscreenButton={false} items={config.galleryImages2} />
       </Layout>
-      <Row gutter={[16, 16]}>
-        {config.galleryImages.map((image, index) => (
-          <Col key={index} span={isPortrait ? 6 : 3}>
-            <Image width={isPortrait ? width / 4 - 10 : width / 8 - 10} src={image} />
-          </Col>
-        ))}
-      </Row>
-    </section>
+    </Wrapper>
   );
 };
 

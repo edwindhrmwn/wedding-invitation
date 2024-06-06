@@ -36,20 +36,20 @@ const VideoBackground = styled.video`
 `;
 
 const WeddingInvitation = styled.p`
-  font-size: 1.5vh;
+  font-size: 15px;
   opacity: 0.45;
   margin-bottom: 16px;
 `;
 
 const GroomBride = styled.p`
-  font-size: 3.5vh;
+  font-size: 25px;
   font-weight: bold;
   opacity: 0.9;
   margin-bottom: 16px;
 `;
 
 const Schedule = styled.p`
-  font-size: 2vh;
+  font-size: 15px;
   opacity: 0.65;
   margin-bottom: 24px;
 `;

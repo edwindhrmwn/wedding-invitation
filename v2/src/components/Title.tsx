@@ -5,41 +5,61 @@ import { ConfigsType } from '../configs';
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
+// const Section = styled('section', {
+//   height: '100%',
+//   background: "linear-gradient(to right, #A6B4C3, #B3BECC, #B3C0CE, #C3D1E0, #C7D5E3, #C4D2E1, #C2D0DF)",
+//   overflow: 'hidden',
+//   position: 'relative',
+// });
 const Section = styled('section', {
   height: '100%',
-  background: '#DADADA',
-  overflow: 'hidden',
-  position: 'relative',
+  display: 'flex',
+  justifyContent: 'space-between',
+  flexDirection: 'column',
+  background: "white",
+  // overflow: 'hidden',
+  // position: 'relative',
 });
 
 const Layout = styled('div', {
   width: '100%',
   color: '#5D4037',
   textAlign: 'center',
-  marginTop: '3.5%',
+  padding: "0 15px",
   animation: 'fadein 2.5s',
+  zIndex: 2,
 });
 
 const TitleLayout = styled('p', {
   width: '100%',
-  fontSize: isPortrait ? '2.5em' : '3.5em',
+  letterSpacing: 5,
+  fontWeight: 300,
+  fontSize: isPortrait ? '35px' : '40px',
   margin: 0,
-  fontWeight: '500',
 });
+
+// const SubTitleLayout = styled('p', {
+//   width: '100%',
+//   fontSize: isPortrait ? '20px' : '25px',
+//   margin: '24px 0',
+//   fontWeight: '300',
+// });
 
 const SubTitleLayout = styled('p', {
   width: '100%',
-  fontSize: isPortrait ? '1.2em' : '2em',
+  fontSize: isPortrait ? 15 : 20,
   margin: '24px 0',
+  // padding: '0 10px',
   fontWeight: '300',
 });
 
 const ImageLayout = styled('div', {
   width: '100%',
-  background: '#DADADA',
+  // background: '#DADADA',
   bottom: '-5px',
   textAlign: 'center',
   position: 'absolute',
+  // zIndex: -1,
 });
 
 const Image = styled('img', {
@@ -48,9 +68,10 @@ const Image = styled('img', {
 
 type TitleProps = {
   config: ConfigsType;
+  onClick: Function;
 };
 
-const Title = ({ config }: TitleProps) => {
+const Title = ({ config, onClick }: TitleProps) => {
   const { width, height } = useWindowSize();
 
   return (
@@ -65,20 +86,27 @@ const Title = ({ config }: TitleProps) => {
         style={{ position: 'fixed' }}
       />
       <Section>
+        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw' }} />
         <Layout>
-          <SubTitleLayout>WEDDING INVITATION</SubTitleLayout>
+          <span style={{ letterSpacing: 2 }}>THE WEDDING OF</span>
           <TitleLayout>
-            {config.groom.name} &amp; {config.bride.name}
+            INTAN
+          </TitleLayout>
+          <span style={{ fontFamily: "Alex Brush", fontSize: 22, wordSpacing: 10 }}>- and -</span>
+          <TitleLayout>
+            EDWIN
           </TitleLayout>
           <SubTitleLayout>
-            {config.weddingDate}
-            <br />
-            {config.weddingLocation}
+            Tanpa mengurangi rasa hormat, kami bermaksud <br/> mengundang Bapak/Ibu/Saudara/i <br/> pada acara pernikahan kami
           </SubTitleLayout>
+          <span style={{ backgroundColor: '#EEEBE9', padding: "8px 15px", borderRadius: 5, letterSpacing: 2 }} onClick={() => onClick()}>
+            OPEN INVITATION
+          </span>
         </Layout>
-        <ImageLayout>
-          <Image src={config.titleImage} alt="Wedding Invitation Title Picutre" />
-        </ImageLayout>
+        <div style={{ display: 'flex', width: '100vw', justifyContent: 'flex-end' }}>
+          <Image src={config.welcomeImages[1]} style={{ width: '40vw' }} />
+        </div>
+
       </Section>
     </>
   );
