@@ -72,10 +72,10 @@ const Configs: ConfigsType = {
     // GalleryPhoto7,
   ],
   galleryImages2: [
-    {
-      original: GalleryPhoto2,
-      thumbnail: GalleryPhoto2,
-    },
+    // {
+    //   original: GalleryPhoto2,
+    //   thumbnail: GalleryPhoto2,
+    // },
     {
       original: GalleryPhoto4,
       thumbnail: GalleryPhoto4,

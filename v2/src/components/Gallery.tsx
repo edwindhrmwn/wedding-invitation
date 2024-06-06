@@ -3,49 +3,79 @@ import { styled } from '@stitches/react';
 import ImageGallery from "react-image-gallery";
 
 import { ConfigsType } from '../configs';
-import GroovePaper from '../resources/GroovePaper.png';
 import "react-image-gallery/styles/css/image-gallery.css";
 
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
-const Layout = styled('div', {
-  width: '100%',
-  padding: isPortrait ? '5%' : '5% 10%',
+const Section = styled('section', {
+  height: '100%',
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  background: "#FFFF",
+  position: 'relative',
 });
 
-const Title = styled('p', {
-  // color: '#FFFFFF',
+const Layout = styled('div', {
   width: '100%',
-  fontSize: isPortrait ? '1.5em' : '2em',
-  margin: 0,
-  fontWeight: '500',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  gap: 20,
+  color: '#5D4037',
+  textAlign: 'center',
+  padding: "0 25px",
+  zIndex: 2,
+});
+
+const HeaderTitle = styled('div', {
+  width: '100%',
+  display: 'flex',
+  //   justifyContent: 'center',
+})
+
+const FirstWord = styled('div', {
+  textAlign: 'left'
+  // marginLeft: -95
+})
+
+const SecoundWord = styled('div', {
+  fontFamily: 'Alex Brush',
+  letterSpacing: 3,
+  marginTop: -35,
+  // marginRight: -95,
+  fontStyle: 'italic',
+  fontSize: 60,
+})
+
+const Image = styled('img', {
+  width: isPortrait ? '100%' : '40%',
 });
 
 type GalleryProps = {
   config: ConfigsType;
 };
 
-const Wrapper = styled('div', {
-  backgroud: '#efebe9',
-  backgroundImage: `url(${GroovePaper})`,
-  // padding: 42,
-  width: '100%',
-  // maxHeight: '40vh'
-  minHeight: '100vh',
-})
-
 const Gallery = ({ config }: GalleryProps) => {
 
   return (
-    <Wrapper>
+    <Section>
+      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute' }} />
       <Layout>
         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-          <Title>Album Kami</Title>
+          <HeaderTitle>
+            <div style={{ fontSize: 30 }}>
+              <FirstWord>OUR</FirstWord>
+              <SecoundWord>Love Story</SecoundWord>
+            </div>
+          </HeaderTitle>
         </Divider>
         <ImageGallery autoPlay showPlayButton={false} showFullscreenButton={false} items={config.galleryImages2} />
       </Layout>
-    </Wrapper>
+      <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+    </Section>
   );
 };
 
