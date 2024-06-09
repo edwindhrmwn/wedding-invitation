@@ -64,14 +64,12 @@ const Gallery = ({ config }: GalleryProps) => {
     <Section>
       <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute' }} />
       <Layout>
-        <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-          <HeaderTitle>
-            <div style={{ fontSize: 30 }}>
-              <FirstWord>OUR</FirstWord>
-              <SecoundWord>Love Story</SecoundWord>
-            </div>
-          </HeaderTitle>
-        </Divider>
+        <HeaderTitle>
+          <div style={{ fontSize: 30 }}>
+            <FirstWord>OUR</FirstWord>
+            <SecoundWord>Memories</SecoundWord>
+          </div>
+        </HeaderTitle>
         <ImageGallery autoPlay showPlayButton={false} showFullscreenButton={false} items={config.galleryImages2} />
       </Layout>
       <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />

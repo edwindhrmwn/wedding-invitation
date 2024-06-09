@@ -19,6 +19,7 @@ import GalleryPhoto8 from './resources/Photo_PW_8.png';
 import GalleryPhoto9 from './resources/Photo_PW_9.png';
 import GalleryPhoto10 from './resources/Photo_PW_10.jpg';
 import GalleryPhoto11 from './resources/Photo_PW_11.jpg';
+import GalleryPhoto12 from './resources/Photo_PW_12.png';
 import FlowerTopLeft from './resources/flower_top_left Background Removed.png';
 import FlowerBottomRight from './resources/flower_bottom_right Background Removed.png';
 import BankBca from './resources/BCA.jpeg'
@@ -49,7 +50,7 @@ const Configs: ConfigsType = {
     name: 'ANGGREINI INTAN PERMATA SARI',
     name2: 'Anggreini Intan Permata Sari',
     photo: GalleryPhoto10,
-    accountNumber: '7151643829',
+    accountNumber: '104325818490',
     fatherName: 'Bapak Indrasyah Permana',
     fatherAccountNumber: '7151643829',
     motherName: 'Ibu Sutinah',
@@ -62,6 +63,7 @@ const Configs: ConfigsType = {
     FlowerBottomRight,
     GalleryPhoto9,
   ],
+  thankYouBackgroundImage: GalleryPhoto12,
   galleryImages: [
     // GalleryPhoto1,
     // GalleryPhoto2,
@@ -146,6 +148,7 @@ export type ConfigsType = {
   galleryImages: string[];
   bankBca: string;
   backJago: string;
+  thankYouBackgroundImage: string;
   galleryImages2: any[];
   copyImage: string;
   storyContents: Content[]

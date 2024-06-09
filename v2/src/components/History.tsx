@@ -25,64 +25,25 @@ const Layout = styled('div', {
   zIndex: 2,
 });
 
-const TitleLayout = styled('p', {
-  width: '100%',
-  letterSpacing: 5,
-  fontWeight: 300,
-  fontSize: isPortrait ? '35px' : '40px',
-  margin: 0,
-});
-
-const SubTitleLayout = styled('p', {
-  width: '100%',
-  fontSize: isPortrait ? 15 : 20,
-  margin: '24px 0',
-  fontWeight: '300',
-});
-
-const ImageLayout = styled('div', {
-  width: '100%',
-  bottom: '-5px',
-  textAlign: 'center',
-  position: 'absolute',
-});
-
 const Image = styled('img', {
   width: isPortrait ? '100%' : '40%',
 });
 
-const TextDetailStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 10,
-  fontSize: 14,
-  letterSpacing: 2,
-}
-
 const HeaderTitle = styled('div', {
   width: '100%',
   display: 'flex',
-  //   justifyContent: 'center',
 })
 
 const FirstWord = styled('div', {
   textAlign: 'left'
-  // marginLeft: -95
 })
 
 const SecoundWord = styled('div', {
   fontFamily: 'Alex Brush',
   letterSpacing: 3,
   marginTop: -35,
-  // marginRight: -95,
   fontStyle: 'italic',
   fontSize: 60,
-})
-
-const SubTitleStyle = styled('div', {
-  fontSize: 40,
-  fontStyle: 'italic',
-  fontFamily: 'Alex Brush',
 })
 
 type TitleProps = {
@@ -105,18 +66,18 @@ const History = ({ config }: TitleProps) => {
           return (
             <div
               style={{
-                display: 'flex',
                 gap: 10,
+                display: 'flex',
+                flexDirection: e.position == 'right' ? 'row' : 'row-reverse',
                 justifyContent: e.position == 'right' ? 'end' : 'start',
-                flexDirection: e.position == 'right' ? 'row' : 'row-reverse'
               }}
             >
               <span
                 style={{
                   display: 'flex',
-                  alignItems: 'center',
                   fontSize: 12,
                   textAlign: e.position == 'right' ? 'right' : 'left',
+                  alignItems: 'center',
                   whiteSpace: 'pre-line',
                 }}
               >

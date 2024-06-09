@@ -34,7 +34,7 @@ function App() {
       <Gallery config={Configs} />
       <Location config={Configs} />
       <CongratulatoryMoney config={Configs} />
-      <Share config={Configs} />
+      {/* <Share config={Configs} /> */}
       <Chats config={Configs} />
       <Footer
         style={{
