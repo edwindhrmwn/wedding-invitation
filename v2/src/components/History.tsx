@@ -18,7 +18,7 @@ const Layout = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  gap: 20,
+  gap: 10,
   color: '#5D4037',
   textAlign: 'center',
   padding: "0 25px",
@@ -68,15 +68,15 @@ const History = ({ config }: TitleProps) => {
               style={{
                 gap: 10,
                 display: 'flex',
-                flexDirection: e.position == 'right' ? 'row' : 'row-reverse',
-                justifyContent: e.position == 'right' ? 'end' : 'start',
+                flexDirection: e.position === 'right' ? 'row' : 'row-reverse',
+                justifyContent: e.position === 'right' ? 'end' : 'start',
               }}
             >
               <span
                 style={{
                   display: 'flex',
                   fontSize: 12,
-                  textAlign: e.position == 'right' ? 'right' : 'left',
+                  textAlign: e.position === 'right' ? 'right' : 'left',
                   alignItems: 'center',
                   whiteSpace: 'pre-line',
                 }}
@@ -84,7 +84,7 @@ const History = ({ config }: TitleProps) => {
                 {e.text}
               </span>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ textAlign: e.position == 'right' ? 'right' : 'left', fontWeight: 'bold' }}>{e?.year}</span>
+                <span style={{ textAlign: e.position === 'right' ? 'right' : 'left', fontWeight: 'bold' }}>{e?.year}</span>
                 <div style={{ position: 'relative', width: 100, height: 100 }}>
                   <Image src={e.image} style={{ display: 'absolute', objectFit: 'cover', width: 100, height: 100 }} />
                 </div>

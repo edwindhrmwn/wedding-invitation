@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+// import { useRef } from 'react';
 import { styled } from '@stitches/react';
 import { ConfigsType } from '../configs';
 
@@ -80,11 +80,12 @@ const Location = ({ config }: LocationProps) => {
           <b style={{ fontSize: 15, fontWeight: 900 }}>Mandiri Ballroom</b> <br />
           Jl. Siaran, Sako, Kec. Sako, Kota Palembang, Sumatera Selatan 30961
         </SubTitle>
+        {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1716.457656430824!2d104.7898003861945!3d-2.9310687665381376!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b773ffc38c431%3A0xcb51c1bee2e1d61b!2sMandiri%20Ballroom!5e0!3m2!1sen!2sid!4v1709994723259!5m2!1sen!2sid"
           width="100%"
-          height="100%"
           style={{ border: 0, minHeight: 300, maxHeight: '50vh' }}
+          height="100%"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade">
         </iframe>

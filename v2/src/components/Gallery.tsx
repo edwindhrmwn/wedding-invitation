@@ -1,4 +1,4 @@
-import { Divider } from 'antd';
+// import { Divider } from 'antd';
 import { styled } from '@stitches/react';
 import ImageGallery from "react-image-gallery";
 
