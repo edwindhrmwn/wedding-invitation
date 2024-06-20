@@ -1,18 +1,43 @@
-import { styled } from '@stitches/react';
-import { ConfigsType } from '../configs';
-import ChatData from '../data/thanksGiving.json'
-import { Button, Select } from 'antd';
 import { useState } from 'react';
+import { Button, Input, InputNumber, Select } from 'antd';
+import { styled } from '@stitches/react';
+// import ChatData from '../data/thanksGiving.json'
+// @ts-ignore
+// import { writeFile } from 'fs-web';
+import { ConfigsType } from '../configs';
+import TextArea from 'antd/lib/input/TextArea';
+
+type jsonFileType = {
+  key?: any;
+  username?: string;
+  attandace?: string;
+  message?: string;
+  guest?: number;
+}
+// const jsonData: jsonFileType[] = ChatData
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
 const Section = styled('section', {
   height: '100%',
-  minHeight: '100vh',
   display: 'flex',
-  flexDirection: 'column',
-  background: "#FFFF",
   position: 'relative',
+  minHeight: '100vh',
+  background: '#FFFF',
+  alignItems: 'center',
+  flexDirection: 'column',
+  justifyContent: 'center',
+});
+
+const Section2 = styled('section', {
+  height: '100%',
+  display: 'flex',
+  position: 'relative',
+  minHeight: '100vh',
+  background: '#EFEBE9',
+  alignItems: 'center',
+  flexDirection: 'column',
+  justifyContent: 'center',
 });
 
 const Layout = styled('div', {
@@ -38,7 +63,8 @@ const SubTitleLayout = styled('p', {
 const HeaderTitle = styled('div', {
   width: '100%',
   display: 'flex',
-  //   justifyContent: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
 })
 
 const FirstWord = styled('div', {
@@ -67,6 +93,13 @@ const Chats = ({ config }: TitleProps) => {
   const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
   const [attandace, setAttandace] = useState('')
+  const [jsonData, setjsonData] = useState<jsonFileType[]>([])
+
+  const resetValue = () => {
+    setUsername('')
+    setMessage('')
+    setAttandace('')
+  }
 
   const onChangeUsername = (input: React.ChangeEvent<HTMLInputElement>) => {
     console.log(input.target.value)
@@ -76,61 +109,114 @@ const Chats = ({ config }: TitleProps) => {
     console.log(input.target.value)
     setMessage(input.target.value)
   }
-  const onSent = () => {
-    const data = JSON.parse(JSON.stringify(ChatData))
-    data.push({ username, message, attandace, key: Math.random() * Math.random() })
-    ChatData.push({ username, message, attandace, key: Math.random() * Math.random() })
+  const onSelect = (input: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(input)
+    setAttandace(input.toString())
+  }
+  const onSent = async () => {
+    try {
+      console.log("submit")
+      const data = JSON.parse(JSON.stringify(jsonData))
+      data.push({ username, message, attandace, key: Math.random() * 1000 })
+      // ChatData.push({ username, message, attandace, key: Math.random() * 1000 })
 
-    // fs.writeFileSync('../data/thanksGiving.json', JSON.stringify(data))
+      // await fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err: any) {
+      //   if (err) return console.log(err);
+      //   console.log(JSON.stringify(data));
+      //   console.log('writing to ' + fileName);
+      // })
+      resetValue()
+      setjsonData(data)
+      // await writeFile('../data/thanksGiving.json', JSON.stringify(data))
+    } catch (error) {
+      console.log("error", error)
+    }
   }
 
 
   return (
-    <Section>
-      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute' }} />
-      <HeaderTitle>
+    <>
+      <Section>
+        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
+        <HeaderTitle>
           <div style={{ fontSize: 30 }}>
             <FirstWord>RSVP &</FirstWord>
             <SecoundWord>Wishes</SecoundWord>
           </div>
         </HeaderTitle>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-        <input value={username} onChange={onChangeUsername} placeholder='Nama' style={{ width: '80%' }} />
-        <textarea placeholder='Ucapan' style={{ width: '80%' }} onChange={onChangeWish} />
-        <Select onChange={(e: any) => console.log("asdadas", e)} placeholder='Kehadiran' style={{ width: '80%', border: '0.5px solid black' }}>
-          <Select.Option key={1}>Hadir</Select.Option>
-          <Select.Option key={2}>Mungkin</Select.Option>
-          <Select.Option key={3}>Tidak Hadir</Select.Option>
-        </Select>
-        <Button style={{ width: '30%', border: '0.5px solid black' }} onClick={onSent}>Kirim</Button>
-      </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5, width: '70vw', maxWidth: 300 }}>
 
-      <SubTitleLayout>Ucapan</SubTitleLayout>
-      <Layout>
+          <div>Name</div>
+          <Input value={username} onChange={onChangeUsername} disabled={false} placeholder='Nama' style={{ border: '0.5px solid black', backgroundColor: '#EFEBE9' }} />
+
+          <div>Will you attend?</div>
+          <Select
+            // @ts-ignore
+            value={attandace}
+            onChange={onSelect}
+            placeholder="Gladly Accepts/Sorry, I can’t"
+            style={{ border: '0.5px solid black', backgroundColor: '#EFEBE9' }}
+            dropdownStyle={{ backgroundColor: '#EFEBE9' }}
+          >
+            <Select.Option key={1} value={"Gladly Accepts"}>Gladly Accepts</Select.Option>
+            <Select.Option key={2} value={"Sorry, I can't"}>Sorry, I can't</Select.Option>
+          </Select>
+
+          <div>How many guest?</div>
+          <InputNumber
+            placeholder='0/1/2'
+            style={{ border: '0.5px solid black', width: '100%', backgroundColor: '#EFEBE9' }}
+          />
+
+          <div>Wishes</div>
+          <TextArea value={message} placeholder='Ucapan' style={{ border: '0.5px solid black', backgroundColor: '#EFEBE9' }} onChange={onChangeWish} />
+
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Button style={{ width: '40vw', maxWidth: 200, border: '0.5px solid black', backgroundColor: '#F2D6A0', fontWeight: 600 }} onClick={onSent}>SEND</Button>
+          </div>
+        </div>
+        <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+
+      </Section>
+
+
+      <Section2>
+        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
+        <HeaderTitle>
+          <div style={{ fontSize: 30 }}>
+            <FirstWord>RSVP &</FirstWord>
+            <SecoundWord>Wishes</SecoundWord>
+          </div>
+        </HeaderTitle>
         <div
           style={{
-            border: '1px solid',
+            gap: 10,
+            width: '70vw',
+            height: '50vh',
             padding: 5,
+            display: 'flex',
+            maxWidth: 400,
             overflow: 'auto',
-            maxHeight: '40vh',
-            borderColor: 'black'
+            flexDirection: 'column',
           }}
         >
           {
-            ChatData.map(e => {
+            jsonData.map((e, i) => {
               return (
-                <div key={e.key}>
-                  <div><b>{e.username}</b> ({e.attandace})</div>
-                  <p><i>{e.message}</i></p>
+                <div key={e?.key || i} style={{ backgroundColor: "#C6BBB8", padding: 5 }}>
+                  <div><b>{e?.username}</b></div>
+                  <div><b>{e?.attandace}</b></div>
+                  <span>{e?.guest}</span>
+                  <span><i>{e?.message}</i></span>
                 </div>
               )
             })
           }
         </div>
-      </Layout>
-      <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+        <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
 
-    </Section>
+      </Section2>
+    </>
   );
 };
 

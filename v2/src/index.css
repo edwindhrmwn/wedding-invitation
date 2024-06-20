@@ -21,17 +21,35 @@ code {
 html,
 body,
 #root,
-#root > div {
+#root>div {
   height: 100%;
+}
+
+.ant-select-selector {
+  background-color: #EFEBE9 !important;
+}
+
+#root>main>section:nth-child(8)>div:nth-child(3)>div.ant-select.ant-select-single.ant-select-show-arrow>div>span.ant-select-selection-placeholder {
+  color: #c1c1c1 !important;
+}
+
+.ant-select-selection__placeholder {
+  color: #624A44 !important;
+}
+
+.ant-select-selection-placeholder {
+  color: #624A44 !important;
 }
 
 @keyframes fadein {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 0.5;
   }
+
   100% {
     opacity: 1;
   }

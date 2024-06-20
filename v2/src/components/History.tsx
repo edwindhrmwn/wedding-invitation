@@ -62,9 +62,10 @@ const History = ({ config }: TitleProps) => {
             <SecoundWord>Love Story</SecoundWord>
           </div>
         </HeaderTitle>
-        {config.storyContents.map(e => {
+        {config.storyContents.map((e, i) => {
           return (
             <div
+              key={i}
               style={{
                 gap: 10,
                 display: 'flex',

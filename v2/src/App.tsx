@@ -34,17 +34,7 @@ function App() {
       <Gallery config={Configs} />
       <Location config={Configs} />
       <CongratulatoryMoney config={Configs} />
-      {/* <Share config={Configs} /> */}
       <Chats config={Configs} />
-      <Footer
-        style={{
-          background: '#D7CCC8',
-          opacity: 0.6,
-          textAlign: 'center',
-        }}
-      >
-        Copyright © 2021 KyuHyuk Lee
-      </Footer>
     </main>
   );
 }
