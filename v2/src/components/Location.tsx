@@ -72,7 +72,7 @@ const Location = ({ config }: LocationProps) => {
       <Layout>
         <HeaderTitle>
           <div style={{ fontSize: 30 }}>
-            <FirstWord>OUR</FirstWord>
+            <FirstWord>Wedding</FirstWord>
             <SecoundWord>Location</SecoundWord>
           </div>
         </HeaderTitle>

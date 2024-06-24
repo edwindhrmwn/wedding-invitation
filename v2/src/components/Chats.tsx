@@ -1,14 +1,17 @@
-import { useState } from 'react';
-import { Button, Input, InputNumber, Select } from 'antd';
+import { useEffect, useState } from 'react';
+import { Button, Form, Input, InputNumber, Select } from 'antd';
 import { styled } from '@stitches/react';
 // import ChatData from '../data/thanksGiving.json'
 // @ts-ignore
 // import { writeFile } from 'fs-web';
 import { ConfigsType } from '../configs';
 import TextArea from 'antd/lib/input/TextArea';
+import { collection, query, orderBy, onSnapshot, addDoc, Timestamp } from "firebase/firestore"
+import { db } from '../firebase'
+import FormItem from 'antd/es/form/FormItem';
 
 type jsonFileType = {
-  key?: any;
+  id?: any;
   username?: string;
   attandace?: string;
   message?: string;
@@ -93,46 +96,62 @@ const Chats = ({ config }: TitleProps) => {
   const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
   const [attandace, setAttandace] = useState('')
+  const [guest, setGuest] = useState<number>()
   const [jsonData, setjsonData] = useState<jsonFileType[]>([])
+  const [isSubmit, setIsSubmit] = useState<Boolean>(false)
+
+  useEffect(() => {
+    const q = query(collection(db, 'wishes'), orderBy('insertedDate', 'desc'))
+    onSnapshot(q, (querySnapshot) => {
+      console.log(querySnapshot.docs)
+      setjsonData(querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        attandace: doc.data()?.isAttend ? 'Gladly Accepts' : "Sorry, I can't",
+        ...doc.data()
+      })))
+    })
+  }, [])
 
   const resetValue = () => {
     setUsername('')
     setMessage('')
     setAttandace('')
+    setGuest(0)
   }
 
   const onChangeUsername = (input: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(input.target.value)
+    setIsSubmit(false)
     setUsername(input.target.value)
   }
   const onChangeWish = (input: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log(input.target.value)
+    setIsSubmit(false)
     setMessage(input.target.value)
   }
   const onSelect = (input: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(input)
+    setIsSubmit(false)
     setAttandace(input.toString())
+  }
+  const onChangeGuest = (input: number) => {
+    setGuest(input)
   }
   const onSent = async () => {
     try {
-      console.log("submit")
-      const data = JSON.parse(JSON.stringify(jsonData))
-      data.push({ username, message, attandace, key: Math.random() * 1000 })
-      // ChatData.push({ username, message, attandace, key: Math.random() * 1000 })
-
-      // await fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err: any) {
-      //   if (err) return console.log(err);
-      //   console.log(JSON.stringify(data));
-      //   console.log('writing to ' + fileName);
-      // })
+      setIsSubmit(true)
+      
+      if (!username.length || !message.length || null == guest || undefined == guest || !attandace) return
       resetValue()
-      setjsonData(data)
-      // await writeFile('../data/thanksGiving.json', JSON.stringify(data))
+      await addDoc(collection(db, 'wishes'), {
+        username,
+        message,
+        guest: guest || 0,
+        isAttend: attandace == 'Gladly Accepts',
+        insertedDate: Timestamp.now()
+      })
+      setIsSubmit(false)
     } catch (error) {
       console.log("error", error)
     }
   }
-
 
   return (
     <>
@@ -147,15 +166,24 @@ const Chats = ({ config }: TitleProps) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5, width: '70vw', maxWidth: 300 }}>
 
           <div>Name</div>
-          <Input value={username} onChange={onChangeUsername} disabled={false} placeholder='Nama' style={{ border: '0.5px solid black', backgroundColor: '#EFEBE9' }} />
+          <Input
+            value={username}
+            // status="error"
+            status={isSubmit && !username ? 'error' : ''}
+            onChange={onChangeUsername}
+            disabled={false}
+            placeholder='Nama'
+            style={{ backgroundColor: '#EFEBE9' }}
+          />
 
           <div>Will you attend?</div>
           <Select
             // @ts-ignore
             value={attandace}
+            style={{ backgroundColor: '#EFEBE9' }}
+            status={isSubmit && !attandace ? 'error' : ''}
             onChange={onSelect}
-            placeholder="Gladly Accepts/Sorry, I can’t"
-            style={{ border: '0.5px solid black', backgroundColor: '#EFEBE9' }}
+            placeholder="Gladly Accepts/Sorry, I can't"
             dropdownStyle={{ backgroundColor: '#EFEBE9' }}
           >
             <Select.Option key={1} value={"Gladly Accepts"}>Gladly Accepts</Select.Option>
@@ -164,12 +192,21 @@ const Chats = ({ config }: TitleProps) => {
 
           <div>How many guest?</div>
           <InputNumber
+            value={guest}
+            onChange={onChangeGuest}
             placeholder='0/1/2'
-            style={{ border: '0.5px solid black', width: '100%', backgroundColor: '#EFEBE9' }}
+            status={isSubmit && (null == guest || undefined == guest) ? 'error' : ''}
+            style={{ width: '100%', backgroundColor: '#EFEBE9' }}
           />
 
           <div>Wishes</div>
-          <TextArea value={message} placeholder='Ucapan' style={{ border: '0.5px solid black', backgroundColor: '#EFEBE9' }} onChange={onChangeWish} />
+          <TextArea
+            style={{ backgroundColor: '#EFEBE9' }}
+            value={message}
+            status={isSubmit && !message.length ? 'error' : ''}
+            onChange={onChangeWish}
+            placeholder='Ucapan'
+          />
 
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             <Button style={{ width: '40vw', maxWidth: 200, border: '0.5px solid black', backgroundColor: '#F2D6A0', fontWeight: 600 }} onClick={onSent}>SEND</Button>
@@ -192,7 +229,7 @@ const Chats = ({ config }: TitleProps) => {
           style={{
             gap: 10,
             width: '70vw',
-            height: '50vh',
+            height: '70vh',
             padding: 5,
             display: 'flex',
             maxWidth: 400,
@@ -203,11 +240,13 @@ const Chats = ({ config }: TitleProps) => {
           {
             jsonData.map((e, i) => {
               return (
-                <div key={e?.key || i} style={{ backgroundColor: "#C6BBB8", padding: 5 }}>
+                <div key={e?.id || i} style={{ backgroundColor: "#C6BBB8", color: "#624A44", padding: 5, minHeight: 150 }}>
                   <div><b>{e?.username}</b></div>
                   <div><b>{e?.attandace}</b></div>
-                  <span>{e?.guest}</span>
-                  <span><i>{e?.message}</i></span>
+                  <div style={{ fontWeight: 300 }}>
+                    <span>{e?.guest} Guest</span> <br />
+                    <span>{e?.message}</span>
+                  </div>
                 </div>
               )
             })
