@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Button, Form, Input, InputNumber, Select } from 'antd';
 import { styled } from '@stitches/react';
-// import ChatData from '../data/thanksGiving.json'
-// @ts-ignore
-// import { writeFile } from 'fs-web';
-import { ConfigsType } from '../configs';
+import { useEffect, useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
+import { Button, Form, Input, InputNumber, Select } from 'antd';
 import { collection, query, orderBy, onSnapshot, addDoc, Timestamp } from "firebase/firestore"
+
 import { db } from '../firebase'
-import FormItem from 'antd/es/form/FormItem';
+import { ConfigsType } from '../configs';
 
 type jsonFileType = {
   id?: any;
@@ -17,7 +14,6 @@ type jsonFileType = {
   message?: string;
   guest?: number;
 }
-// const jsonData: jsonFileType[] = ChatData
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
@@ -103,7 +99,6 @@ const Chats = ({ config }: TitleProps) => {
   useEffect(() => {
     const q = query(collection(db, 'wishes'), orderBy('insertedDate', 'desc'))
     onSnapshot(q, (querySnapshot) => {
-      console.log(querySnapshot.docs)
       setjsonData(querySnapshot.docs.map(doc => ({
         id: doc.id,
         attandace: doc.data()?.isAttend ? 'Gladly Accepts' : "Sorry, I can't",
