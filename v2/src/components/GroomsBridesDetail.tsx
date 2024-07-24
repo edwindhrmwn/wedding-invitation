@@ -11,6 +11,7 @@ const Section = styled('section', {
   flexDirection: 'column',
   background: "white",
   position: 'relative',
+  alignItems: 'center',
 });
 
 const Layout = styled('div', {
@@ -23,6 +24,7 @@ const Layout = styled('div', {
   textAlign: 'center',
   padding: "0 15px",
   zIndex: 2,
+  maxWidth: 600,
 });
 
 const TitleLayout = styled('p', {
@@ -66,7 +68,7 @@ const GroomsBridesDetail = ({ config }: TitleProps) => {
 
   return (
     <Section>
-      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute' }} />
+      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
       <Layout>
         <div style={{ display: 'flex', gap: '10px' }}>
           <span

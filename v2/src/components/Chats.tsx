@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 import { useEffect, useState } from 'react';
 import TextArea from 'antd/lib/input/TextArea';
-import { Button, Form, Input, InputNumber, Select } from 'antd';
+import { Button, Input, InputNumber, Select } from 'antd';
 import { collection, query, orderBy, onSnapshot, addDoc, Timestamp } from "firebase/firestore"
 
 import { db } from '../firebase'

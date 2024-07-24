@@ -30,12 +30,21 @@ import StoryImage2 from './resources/Story_Photo_2.jpeg'
 import StoryImage3 from './resources/Story_Photo_3.jpeg'
 import StoryImage4 from './resources/Story_Photo_4.jpeg'
 
+import Music from './resources/music_love_wins_all.mp3'
+import PlayIcon from './resources/music_play_icon.png'
+import PauseIcon from './resources/music_pause_icon.png'
+
 const Configs: ConfigsType = {
   url: 'http://localhost:3000',
   kakaoToken: 'testing',
   kakaoImage: 'testing kakao image',
   weddingDate: '09 November 2024',
   weddingLocation: 'Gedung Serbaguna Mandiri',
+  musicIcon: {
+    play: PlayIcon,
+    pause: PauseIcon
+  },
+  music: Music,
   groom: {
     name: 'EDWIN DHARMAWAN',
     name2: 'Edwin Dharmawan',
@@ -157,7 +166,9 @@ export type ConfigsType = {
   thankYouBackgroundImage: string;
   galleryImages2: any[];
   copyImage: string;
-  storyContents: Content[]
+  storyContents: Content[];
+  musicIcon: music;
+  music: any;
 };
 
 type Person = {
@@ -176,6 +187,11 @@ type Content = {
   text: string;
   image: string;
   year?: number;
+}
+
+type music = {
+  play: string;
+  pause: string;
 }
 
 

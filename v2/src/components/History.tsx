@@ -10,6 +10,7 @@ const Section = styled('section', {
   flexDirection: 'column',
   background: "#FFFF",
   position: 'relative',
+  alignItems: 'center',
 });
 
 const Layout = styled('div', {
@@ -23,6 +24,7 @@ const Layout = styled('div', {
   textAlign: 'center',
   padding: "0 25px",
   zIndex: 2,
+  maxWidth: 600,
 });
 
 const Image = styled('img', {
@@ -54,7 +56,7 @@ const History = ({ config }: TitleProps) => {
 
   return (
     <Section>
-      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute' }} />
+      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
       <Layout>
         <HeaderTitle>
           <div style={{ fontSize: 30 }}>
