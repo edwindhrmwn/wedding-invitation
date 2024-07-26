@@ -86,7 +86,7 @@ const Title = ({ config, onClick }: TitleProps) => {
         style={{ position: 'fixed' }}
       />
       <Section>
-        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw' }} />
+        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', maxWidth: 200 }} />
         <Layout>
           <span style={{ letterSpacing: 2 }}>THE WEDDING OF</span>
           <TitleLayout>
@@ -104,7 +104,7 @@ const Title = ({ config, onClick }: TitleProps) => {
           </span>
         </Layout>
         <div style={{ display: 'flex', width: '100vw', justifyContent: 'flex-end' }}>
-          <Image src={config.welcomeImages[1]} style={{ width: '40vw' }} />
+          <Image src={config.welcomeImages[1]} style={{ width: '40vw', maxWidth: 200 }} />
         </div>
 
       </Section>

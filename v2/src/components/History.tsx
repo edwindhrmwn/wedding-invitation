@@ -56,7 +56,7 @@ const History = ({ config }: TitleProps) => {
 
   return (
     <Section>
-      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
+      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', maxWidth: 200, position: 'absolute', top: 0, left: 0 }} />
       <Layout>
         <HeaderTitle>
           <div style={{ fontSize: 30 }}>
@@ -97,7 +97,7 @@ const History = ({ config }: TitleProps) => {
           )
         })}
       </Layout >
-      <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+      <Image src={config.welcomeImages[1]} style={{ width: '40vw', maxWidth: 200, position: 'absolute', bottom: 0, right: 0 }} />
     </Section >
   );
 };

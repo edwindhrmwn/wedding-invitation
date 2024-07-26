@@ -151,7 +151,7 @@ const Chats = ({ config }: TitleProps) => {
   return (
     <>
       <Section>
-        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
+        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', maxWidth: 200, position: 'absolute', top: 0, left: 0 }} />
         <HeaderTitle>
           <div style={{ fontSize: 30 }}>
             <FirstWord>RSVP &</FirstWord>
@@ -207,13 +207,13 @@ const Chats = ({ config }: TitleProps) => {
             <Button style={{ width: '40vw', maxWidth: 200, border: '0.5px solid black', backgroundColor: '#F2D6A0', fontWeight: 600 }} onClick={onSent}>SEND</Button>
           </div>
         </div>
-        <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+        <Image src={config.welcomeImages[1]} style={{ width: '40vw', maxWidth: 200, position: 'absolute', bottom: 0, right: 0 }} />
 
       </Section>
 
 
       <Section2>
-        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute', top: 0, left: 0 }} />
+        <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', maxWidth: 200, position: 'absolute', top: 0, left: 0 }} />
         <HeaderTitle>
           <div style={{ fontSize: 30 }}>
             <FirstWord>RSVP &</FirstWord>
@@ -247,7 +247,7 @@ const Chats = ({ config }: TitleProps) => {
             })
           }
         </div>
-        <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+        <Image src={config.welcomeImages[1]} style={{ width: '40vw', maxWidth: 200, position: 'absolute', bottom: 0, right: 0 }} />
 
       </Section2>
     </>

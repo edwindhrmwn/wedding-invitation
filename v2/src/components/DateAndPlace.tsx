@@ -92,7 +92,7 @@ const DateAndPlace = ({ config }: TitleProps) => {
 
   return (
     <Section>
-      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', position: 'absolute' }} />
+      <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', maxWidth: 200, position: 'absolute' }} />
       <Layout>
         <HeaderTitle>
           <div style={{ fontSize: 30, width: 200 }}>
@@ -123,7 +123,7 @@ const DateAndPlace = ({ config }: TitleProps) => {
           </div>
         </div>
       </Layout >
-      <Image src={config.welcomeImages[1]} style={{ width: '40vw', position: 'absolute', bottom: 0, right: 0 }} />
+      <Image src={config.welcomeImages[1]} style={{ width: '40vw', maxWidth: 200, position: 'absolute', bottom: 0, right: 0 }} />
     </Section >
   );
 };
