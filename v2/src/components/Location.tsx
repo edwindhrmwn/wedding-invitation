@@ -79,7 +79,7 @@ const Location = ({ config }: LocationProps) => {
           </div>
         </HeaderTitle>
         <SubTitle>
-          <b style={{ fontSize: 15, fontWeight: 900 }}>Mandiri Ballroom</b> <br />
+          <b style={{ fontSize: 15, fontWeight: 900 }}>{config.weddingLocation}</b> <br />
           Jl. Siaran, Sako, Kec. Sako, Kota Palembang, Sumatera Selatan 30961
         </SubTitle>
         {/* eslint-disable-next-line jsx-a11y/iframe-has-title */}

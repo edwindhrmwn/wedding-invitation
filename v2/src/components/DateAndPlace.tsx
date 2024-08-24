@@ -1,5 +1,6 @@
 import { styled } from '@stitches/react';
 import { ConfigsType } from '../configs';
+import { Fragment } from 'react';
 
 const isPortrait = window.matchMedia('(orientation: portrait)').matches;
 
@@ -88,8 +89,17 @@ type TitleProps = {
   config: ConfigsType;
 };
 
+
 const DateAndPlace = ({ config }: TitleProps) => {
 
+  const Place = () => {
+    return (
+      <>
+        Jl. Siaran, Sako, Kec. Sako, Kota Palembang,<br />
+        Sumatera Selatan 30961
+      </>
+    )
+  }
   return (
     <Section>
       <Image src={config.welcomeImages[0]} style={{ display: 'flex', width: '40vw', maxWidth: 200, position: 'absolute' }} />
@@ -104,11 +114,10 @@ const DateAndPlace = ({ config }: TitleProps) => {
         <div style={TextDetailStyle}>
           <SubTitleStyle>Akad Nikah</SubTitleStyle>
 
-          <div>09 November 2024<br />15.30 WIB - Selesai</div>
+          <div>09 November 2024<br />14.00 WIB - Selesai</div>
           <div style={{ fontSize: 9 }}>
-            Mandiri Ballroom<br />
-            Jl. Siaran, Sako, Kec. Sako, Kota Palembang,<br />
-            Sumatera Selatan 30961
+            {config.weddingLocation}<br />
+            {Place()}
           </div>
         </div>
 
@@ -117,9 +126,8 @@ const DateAndPlace = ({ config }: TitleProps) => {
 
           <div>09 November 2024<br />18.30 WIB - Selesai</div>
           <div style={{ fontSize: 9 }}>
-            Mandiri Ballroom<br />
-            Jl. Siaran, Sako, Kec. Sako, Kota Palembang,<br />
-            Sumatera Selatan 30961
+            {config.weddingLocation}<br />
+            {Place()}
           </div>
         </div>
       </Layout >

@@ -39,7 +39,8 @@ const Configs: ConfigsType = {
   kakaoToken: 'testing',
   kakaoImage: 'testing kakao image',
   weddingDate: '09 November 2024',
-  weddingLocation: 'Gedung Serbaguna Mandiri',
+  weddingAddress: 'Jl. Siaran, Sako, Kec. Sako, Kota Palembang, <br/> Sumatera Selatan 30961',
+  weddingLocation: 'Mandiri Ballroom',
   musicIcon: {
     play: PlayIcon,
     pause: PauseIcon
@@ -154,6 +155,7 @@ export type ConfigsType = {
   kakaoToken: string;
   kakaoImage: string;
   weddingDate: string;
+  weddingAddress: any;
   weddingLocation: string;
   groom: Person;
   bride: Person;

@@ -99,7 +99,7 @@ const Title = ({ config, onClick }: TitleProps) => {
           <SubTitleLayout>
             Tanpa mengurangi rasa hormat, kami bermaksud <br/> mengundang Bapak/Ibu/Saudara/i <br/> pada acara pernikahan kami
           </SubTitleLayout>
-          <span style={{ backgroundColor: '#EEEBE9', padding: "8px 15px", borderRadius: 5, letterSpacing: 2 }} onClick={() => onClick()}>
+          <span style={{ backgroundColor: '#EEEBE9', cursor: 'pointer', padding: "8px 15px", borderRadius: 5, letterSpacing: 2 }} onClick={() => onClick()}>
             OPEN INVITATION
           </span>
         </Layout>
