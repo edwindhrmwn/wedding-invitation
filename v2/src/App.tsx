@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+// import ReactFullpage from '@fullpage/react-fullpage';
+import ReactPageScroller from 'react-page-scroller';
 
 import Chats from './components/Chats';
 import Configs from './configs';
@@ -28,6 +30,7 @@ function App() {
   const [isOpened, setIsOpened] = useState(false)
   const [audio] = useState(new Audio(Configs.music));
   const [playing, setPlaying] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0)
 
   useEffect(() => {
     if (audio) {
@@ -50,6 +53,28 @@ function App() {
     playing ? audio.pause() : audio.play()
   }
 
+  const handlePageChange = (number: any) => {
+    setCurrentPage(number);
+  };
+
+  const handleBeforePageChange = (number: any) => {
+    console.log(number);
+  };
+
+  // const getPagesNumbers = () => {
+  //   const pageNumbers = [];
+
+  //   for (let i = 1; i <= 5; i++) {
+  //     pageNumbers.push(
+  //       <Pager.Item key={i} eventKey={i - 1} onSelect={this.handlePageChange}>
+  //         {i}
+  //       </Pager.Item>,
+  //     );
+  //   }
+
+  //   return [...pageNumbers];
+  // };
+
   if (!isOpened) return (
     <main style={{ height: '100%' }}>
       <TitleLayout
@@ -63,19 +88,38 @@ function App() {
   )
 
   return (
-    <main style={{ height: '100%', position: 'relative' }}>
-      <Greeting config={Configs} />
-      <GroomsBridesDetail config={Configs} />
-      <DateAndPlace config={Configs} />
-      <History config={Configs} />
+    // <div style={{ height: '100%', position: 'relative' }} id='main' className='scroll-container'>
+    //   <Greeting config={Configs} />
+    //   <GroomsBridesDetail config={Configs} />
+    //   <DateAndPlace config={Configs} />
+    //   <History config={Configs} />
 
 
-      <Gallery config={Configs} />
-      <Location config={Configs} />
-      <CongratulatoryMoney config={Configs} />
-      <Chats config={Configs} />
+    //   <Gallery config={Configs} />
+    //   <Location config={Configs} />
+    //   <CongratulatoryMoney config={Configs} />
+    //   <Chats config={Configs} />
+    //   <Image src={playing ? Configs.musicIcon.pause : Configs.musicIcon.play} onClick={onPlayPauseMusic} />
+    // </div>
+    <>
+      <ReactPageScroller
+        pageOnChange={handlePageChange}
+        onBeforePageScroll={handleBeforePageChange}
+        customPageNumber={currentPage}
+      >
+        <Greeting config={Configs} />
+        <GroomsBridesDetail config={Configs} />
+        <DateAndPlace config={Configs} />
+        <History config={Configs} />
+
+        <Gallery config={Configs} />
+        <Location config={Configs} />
+        <CongratulatoryMoney config={Configs} />
+        <Chats config={Configs} />
+
+      </ReactPageScroller>
       <Image src={playing ? Configs.musicIcon.pause : Configs.musicIcon.play} onClick={onPlayPauseMusic} />
-    </main>
+    </>
   );
 }
 

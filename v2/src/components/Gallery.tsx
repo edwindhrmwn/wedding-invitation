@@ -72,7 +72,15 @@ const Gallery = ({ config }: GalleryProps) => {
             <SecoundWord>Memories</SecoundWord>
           </div>
         </HeaderTitle>
-        <ImageGallery autoPlay showPlayButton={false} showFullscreenButton={false} items={config.galleryImages2} />
+        <ImageGallery
+          autoPlay
+          // thumbMargin={5}
+          // indexSeparator=''
+          showPlayButton={false}
+          showFullscreenButton={false}
+          showThumbnails={false}
+          items={config.galleryImages2}
+        />
       </Layout>
       <Image src={config.welcomeImages[1]} style={{ width: '40vw', maxWidth: 200, position: 'absolute', bottom: 0, right: 0 }} />
     </Section>

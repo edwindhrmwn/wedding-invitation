@@ -8,20 +8,23 @@ import LocationMapImage from './resources/LocationMap.png';
 // import GalleryPhoto4 from './resources/Gallery_Photo_4.png';
 // import GalleryPhoto5 from './resources/Gallery_Photo_5.png';
 // import GalleryPhoto6 from './resources/Gallery_Photo_6.png';
-import GalleryPhoto1 from './resources/Photo_PW_1.jpg';
-// import GalleryPhoto2 from './resources/Photo_PW_2.jpg';
-import GalleryPhoto3 from './resources/Photo_PW_3.jpg';
-import GalleryPhoto4 from './resources/Photo_PW_4.jpg';
-import GalleryPhoto5 from './resources/Photo_PW_5.jpg';
-import GalleryPhoto6 from './resources/Photo_PW_6.jpg';
-import GalleryPhoto7 from './resources/Photo_PW_7.jpg';
-// import GalleryPhoto8 from './resources/Photo_PW_8.png';
-import GalleryPhoto9 from './resources/Photo_PW_9.png';
+import GalleryPhoto1 from './resources/1.png';
+import GalleryPhoto2 from './resources/2.png';
+import GalleryPhoto3 from './resources/3.png';
+import GalleryPhoto4 from './resources/4.png';
+import GalleryPhoto5 from './resources/5.png';
+import GalleryPhoto6 from './resources/6.png';
+import GalleryPhoto7 from './resources/7.png';
+import GalleryPhoto8 from './resources/8.png';
+import GalleryPhoto9 from './resources/9.png';
+
 import GalleryPhoto10 from './resources/Photo_PW_10.jpg';
 import GalleryPhoto11 from './resources/Photo_PW_11.jpg';
 import GalleryPhoto12 from './resources/Photo_PW_12.png';
+
 import FlowerTopLeft from './resources/flower_top_left Background Removed.png';
 import FlowerBottomRight from './resources/flower_bottom_right Background Removed.png';
+import WelcomeImage from './resources/Photo_PW_9.png';
 // import BankBca from './resources/BCA.jpeg'
 import CopyImage from './resources/copy.png'
 
@@ -71,7 +74,7 @@ const Configs: ConfigsType = {
   welcomeImages: [
     FlowerTopLeft,
     FlowerBottomRight,
-    GalleryPhoto9,
+    WelcomeImage,
   ],
   thankYouBackgroundImage: GalleryPhoto12,
   galleryImages: [
@@ -84,23 +87,24 @@ const Configs: ConfigsType = {
     // GalleryPhoto7,
   ],
   galleryImages2: [
-    // {
-    //   original: GalleryPhoto2,
-    //   thumbnail: GalleryPhoto2,
-    // },
-    {
-      original: GalleryPhoto4,
-      thumbnail: GalleryPhoto4,
-      originalHeight: '300px',
-    },
     {
       original: GalleryPhoto1,
       thumbnail: GalleryPhoto1,
       originalHeight: '300px',
     },
     {
+      original: GalleryPhoto2,
+      thumbnail: GalleryPhoto2,
+      originalHeight: '300px',
+    },
+    {
       original: GalleryPhoto3,
       thumbnail: GalleryPhoto3,
+      originalHeight: '300px',
+    },
+    {
+      original: GalleryPhoto4,
+      thumbnail: GalleryPhoto4,
       originalHeight: '300px',
     },
     {
@@ -116,6 +120,16 @@ const Configs: ConfigsType = {
     {
       original: GalleryPhoto7,
       thumbnail: GalleryPhoto7,
+      originalHeight: '300px',
+    },
+    {
+      original: GalleryPhoto8,
+      thumbnail: GalleryPhoto8,
+      originalHeight: '300px',
+    },
+    {
+      original: GalleryPhoto9,
+      thumbnail: GalleryPhoto9,
       originalHeight: '300px',
     },
   ],
