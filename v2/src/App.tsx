@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 // import ReactFullpage from '@fullpage/react-fullpage';
 import ReactPageScroller from 'react-page-scroller';
 
-import Chats from './components/Chats';
 import Configs from './configs';
+
+import SubmitMessage from './components/SubmitMessage';
+import Messages from './components/Messages';
 import Gallery from './components/Gallery';
-import History from './components/History';
+import History from './components/v2/History';
 import Greeting from './components//Greeting';
 import Location from './components//Location';
-import TitleLayout from './components//Title';
-import DateAndPlace from './components/DateAndPlace';
-import GroomsBridesDetail from './components/GroomsBridesDetail';
+import TitleLayout from './components/v2/Title';
+import DateAndPlace from './components/v2/DateAndPlace';
+import GroomsBridesDetail from './components/v2/GroomsBridesDetail';
 import CongratulatoryMoney from './components//CongratulatoryMoney';
 import { styled } from '@stitches/react';
 // import { Image } from 'antd';
@@ -98,7 +100,7 @@ function App() {
     //   <Gallery config={Configs} />
     //   <Location config={Configs} />
     //   <CongratulatoryMoney config={Configs} />
-    //   <Chats config={Configs} />
+    //   <SubmitMessage config={Configs} />
     //   <Image src={playing ? Configs.musicIcon.pause : Configs.musicIcon.play} onClick={onPlayPauseMusic} />
     // </div>
     <>
@@ -115,7 +117,8 @@ function App() {
         <Gallery config={Configs} />
         <Location config={Configs} />
         <CongratulatoryMoney config={Configs} />
-        <Chats config={Configs} />
+        <SubmitMessage config={Configs} />
+        <Messages config={Configs} />
 
       </ReactPageScroller>
       <Image src={playing ? Configs.musicIcon.pause : Configs.musicIcon.play} onClick={onPlayPauseMusic} />

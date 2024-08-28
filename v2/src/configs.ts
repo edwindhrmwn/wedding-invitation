@@ -18,15 +18,19 @@ import GalleryPhoto7 from './resources/7.png';
 import GalleryPhoto8 from './resources/8.png';
 import GalleryPhoto9 from './resources/9.png';
 
-import GalleryPhoto10 from './resources/Photo_PW_10.jpg';
-import GalleryPhoto11 from './resources/Photo_PW_11.jpg';
+import GalleryPhoto10 from './resources/Profile ewin.png';
+import GalleryPhoto11 from './resources/Profile intan.png';
 import GalleryPhoto12 from './resources/Photo_PW_12.png';
 
 import FlowerTopLeft from './resources/flower_top_left Background Removed.png';
 import FlowerBottomRight from './resources/flower_bottom_right Background Removed.png';
 import WelcomeImage from './resources/Photo_PW_9.png';
+import RingBackground from './resources/ringBackground.png'
+
 // import BankBca from './resources/BCA.jpeg'
 import CopyImage from './resources/copy.png'
+
+import mainBackground from './resources/mainBackground.png'
 
 import StoryImage1 from './resources/Story_Photo_1.jpeg'
 import StoryImage2 from './resources/Story_Photo_2.jpeg'
@@ -53,7 +57,7 @@ const Configs: ConfigsType = {
     name: 'EDWIN DHARMAWAN',
     name2: 'Edwin Dharmawan',
     accountNumber: '7151643829',
-    photo: GalleryPhoto11,
+    photo: GalleryPhoto10,
     fatherName: 'Alm. Bapak Eddy Rachmat',
     fatherAccountNumber: '-----',
     motherName: 'Ibu Siti Narwani',
@@ -62,7 +66,7 @@ const Configs: ConfigsType = {
   bride: {
     name: 'ANGGREINI INTAN PERMATA SARI',
     name2: 'Anggreini Intan Permata Sari',
-    photo: GalleryPhoto10,
+    photo: GalleryPhoto11,
     accountNumber: '104325818490',
     fatherName: 'Bapak Indrasyah Permana',
     fatherAccountNumber: '7151643829',
@@ -75,7 +79,9 @@ const Configs: ConfigsType = {
     FlowerTopLeft,
     FlowerBottomRight,
     WelcomeImage,
+    RingBackground,
   ],
+  mainBackground,
   thankYouBackgroundImage: GalleryPhoto12,
   galleryImages: [
     // GalleryPhoto1,
@@ -174,6 +180,7 @@ export type ConfigsType = {
   groom: Person;
   bride: Person;
   titleImage: string;
+  mainBackground: string;
   locationMapImage: string;
   welcomeImages: string[];
   galleryImages: string[];

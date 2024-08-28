@@ -41,6 +41,24 @@ body,
   color: #624A44 !important;
 }
 
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #5D4037;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.line {
+  width: 30px;
+  height: 0;
+  border: 0.5px solid #5D4037;
+  margin: 1em 0;
+  /* margin: 3px; */
+  display:inline-block;
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -53,4 +71,28 @@ body,
   100% {
     opacity: 1;
   }
+}
+
+@media (max-width: 480px) {
+
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    height: 35px !important;
+    width: 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    height: 40px !important;
+    width: 36px !important;
+  }
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  height: 80px !important;
+  width: 60px !important;
 }
